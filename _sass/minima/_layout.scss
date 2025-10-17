@@ -1,0 +1,171 @@
+/**
+ * Site header - minimal, icons on left
+ */
+.site-header {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.site-title {
+  display: block;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.site-title-icon {
+  height: 150px; /* Match nav icon size */
+  width: auto;
+  display: block;
+}
+
+/**
+ * Navigation - stacked icons on left
+ */
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-trigger {
+  display: none; /* Hide checkbox */
+}
+
+.menu-icon {
+  display: none; /* Hide hamburger icon */
+}
+
+.page-link {
+  display: block;
+  text-decoration: none !important;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.page-link img {
+  height: 150px;
+  width: auto;
+  display: block;
+}
+
+/**
+ * Main content - centered with space for icons
+ */
+.page-content {
+  padding: 20px;
+  padding-left: 120px; /* Space for left icons */
+  padding-right: 120px; /* Space for right player */
+  flex: 1;
+}
+
+/**
+ * Site footer - simple
+ */
+.site-footer {
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit 0;
+  text-align: center;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+/**
+ * Posts page
+ */
+.post-header {
+  margin-bottom: $spacing-unit;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.post-meta {
+  font-size: $small-font-size;
+  color: $grey-color;
+}
+
+.post-content {
+  margin-bottom: $spacing-unit;
+}
+
+/**
+ * Music page album grid - keep this!
+ */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.album-item {
+  text-align: center;
+}
+
+.album-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid #000;
+}
+
+.album-item p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.album-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.album-item a:hover img {
+  opacity: 0.8;
+}
+
+/**
+ * Mobile adjustments
+ */
+@media (max-width: 768px) {
+  .site-header {
+    position: relative;
+    left: 0;
+    top: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: $background-color;
+  }
+  
+  .site-nav {
+    flex-direction: row;
+  }
+  
+  .page-content {
+    padding: 20px;
+  }
+  
+  .site-footer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  #cassette-player-container {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 20px auto;
+  }
+}

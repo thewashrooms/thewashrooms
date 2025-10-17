@@ -1,0 +1,157 @@
+/**
+ * Reset - Start fresh
+ */
+html {
+  height: 100%;
+}
+
+body {
+  color: white;
+  background-color: black;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/pictures/washrooms.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: white;
+  background-color: black;
+  -webkit-text-size-adjust: 100%;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: block;
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+}
+
+/**
+ * Basic elements
+ */
+%vertical-rhythm {
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure {
+  @extend %vertical-rhythm;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+/**
+ * Wrapper - standard content width
+ */
+.wrapper {
+  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+}
+
+/**
+ * Home page sections
+ */
+.home-section {
+  padding: 60px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-section {
+  padding: 100px 20px 60px 20px;
+}
+
+.latest-post-section {
+  padding: 60px 20px;
+}
+
+/**
+ * Cursors - keep what works!
+ */
+.layout-home,
+.layout-page {
+  cursor: url('/assets/cursors/Large Pencil Light Blue.cur'), auto;
+}
+
+.layout-post {
+  cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto;
+}
+
+.layout-home a, .layout-home a:hover,
+.layout-page a, .layout-page a:hover {
+  cursor: url('/assets/cursors/Large Pencil Light Blue.cur'), auto !important;
+}
+
+.layout-post a, .layout-post a:hover {
+  cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto !important;
+}
+
+.layout-page:has(.album-grid),
+.layout-page:has(.music-page-content) {
+  cursor: url('/assets/cursors/musical-cursor.cur'), auto;
+}
+
+.layout-page:has(.album-grid) a,
+.layout-page:has(.album-grid) a:hover,
+.layout-page:has(.music-page-content) a,
+.layout-page:has(.music-page-content) a:hover {
+  cursor: url('/assets/cursors/musical-cursor.cur'), auto !important;
+}
+
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.youtube-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.youtube-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
