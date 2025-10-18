@@ -15,7 +15,7 @@ permalink: /
     <h3><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title }}</a></h3>
     <p class="post-meta">{{ latest_post.date | date: "%b %-d, %Y" }}</p>
     <div class="post-excerpt">
-      {{ latest_post.excerpt }}
+      {{ latest_post.excerpt | strip_html | truncatewords: 60, "..." }}
     </div>
     <a href="{{ latest_post.url | relative_url }}">Read more →</a>
   {% endif %}
