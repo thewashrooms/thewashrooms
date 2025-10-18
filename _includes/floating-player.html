@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+
+
+.content {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.floating-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 3px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+  z-index: 9999;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+}
+
+.player-header {
+  display: none;
+}
+
+.mini-cassette {
+  background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.tape-window {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid #3a3a3a;
+  border-radius: 3px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.mini-reel {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #5a5a5a;
+  border-radius: 50%;
+  background: radial-gradient(circle, #3a3a3a 0%, #1a1a1a 100%);
+  position: relative;
+  animation: spin 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.mini-reel.spinning {
+  animation-play-state: running;
+}
+
+.mini-reel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #0a0a0a;
+  border-radius: 50%;
+  border: 1px solid #1a1a1a;
+}
+
+.mini-spoke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 15px;
+  background: #6a6a6a;
+  transform-origin: top center;
+}
+
+.now-playing-mini {
+  text-align: center;
+  color: #8b6bb7;
+  font-size: 10px;
+  margin: 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-controls {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.mini-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 2px solid;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #000;
+  font-family: monospace;
+  border-radius: 3px;
+  background: #4a6a4a;
+  border-color: #3a5a3a;
+}
+
+.mini-btn.stop {
+  background: #6a4a6a;
+  border-color: #5a3a5a;
+}
+
+.mini-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+.mini-progress {
+  margin: 8px 0 4px;
+}
+
+.mini-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.mini-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b6bb7 0%, #6a4a8a 100%);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s;
+}
+
+.mini-time {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 9px;
+}
+
+.track-list {
+  max-height: 120px;
+  overflow-y: auto;
+  background: #0a0a0a;
+  border: 2px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 6px;
+  margin-top: 8px;
+}
+
+.track-list-item {
+  padding: 4px 6px;
+  margin: 2px 0;
+  cursor: pointer;
+  color: #8b8b8b;
+  font-size: 10px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.track-list-item:hover {
+  background: #2a2a2a;
+  color: #b8b8b8;
+}
+
+.track-list-item.current {
+  background: #8b6bb7;
+  color: #fff;
+  font-weight: bold;
+}
+
+.track-list-item.played {
+  color: #4a4a4a;
+}
+
+.track-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.track-list::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.track-list::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 3px;
+}
+
+.track-list-header {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .floating-player {
+    display: none;
+  }
+}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="floating-player">
+  <div class="player-header">♫ Now Playing ♫</div>
+  
+  <div class="mini-cassette">
+    <div class="tape-window">
+      <div class="mini-reel" id="left-reel-mini">
+        <div class="mini-reel-center"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(0deg)"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(60deg)"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(120deg)"></div>
+      </div>
+      
+      <div class="mini-reel" id="right-reel-mini">
+        <div class="mini-reel-center"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(0deg)"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(60deg)"></div>
+        <div class="mini-spoke" style="transform: translate(-50%, 0) rotate(120deg)"></div>
+      </div>
+    </div>
+    
+    <div class="now-playing-mini" id="now-playing-mini">Click play to start</div>
+  </div>
+
+  <div class="mini-progress">
+    <div class="mini-progress-bar" id="progress-bar-mini">
+      <div class="mini-progress-fill" id="progress-fill-mini"></div>
+    </div>
+    <div class="mini-time">
+      <span id="current-time-mini">0:00</span>
+      <span id="duration-mini">0:00</span>
+    </div>
+  </div>
+
+  <div class="mini-controls">
+    <button class="mini-btn" id="play-btn-mini">▶</button>
+    <button class="mini-btn stop" id="stop-btn-mini">■</button>
+  </div>
+
+  <div class="track-list-header">Queue:</div>
+  <div class="track-list" id="track-list-mini"></div>
+</div>
+
+<audio id="audio-mini"></audio>
+
+<script>
+// CONFIGURATION - EDIT THIS!
+const firstTrack = { 
+  id: 1, 
+  title: 'Buried', 
+  src: '/assets/downloadmusic/Buried(extended).mp3' 
+};
+
+const otherTracks = [
+  { id: 2, title: 'Milan', src: '/assets/downloadmusic/milan.mp3' },
+  { id: 3, title: 'Is It Colours', src: '/assets/downloadmusic/isitcolours.mp3' },
+  { id: 4, title: 'D-F', src: '/assets/downloadmusic/df.mp3' },
+  { id: 5, title: 'Ennui', src: '/assets/downloadmusic/ennui.mp3' }
+];
+
+// Shuffle function
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Create playlist: first track + shuffled others
+const playlist = [firstTrack, ...shuffle(otherTracks)];
+
+let currentIndex = 0;
+let isPlaying = false;
+
+const audio = document.getElementById('audio-mini');
+const nowPlaying = document.getElementById('now-playing-mini');
+const playBtn = document.getElementById('play-btn-mini');
+const stopBtn = document.getElementById('stop-btn-mini');
+const currentTimeEl = document.getElementById('current-time-mini');
+const durationEl = document.getElementById('duration-mini');
+const leftReel = document.getElementById('left-reel-mini');
+const rightReel = document.getElementById('right-reel-mini');
+const progressBar = document.getElementById('progress-bar-mini');
+const progressFill = document.getElementById('progress-fill-mini');
+const trackList = document.getElementById('track-list-mini');
+
+// Build track list
+function buildTrackList() {
+  trackList.innerHTML = '';
+  playlist.forEach((track, idx) => {
+    const div = document.createElement('div');
+    div.className = 'track-list-item';
+    div.textContent = `${idx + 1}. ${track.title}`;
+    div.onclick = () => jumpToTrack(idx);
+    div.dataset.index = idx;
+    trackList.appendChild(div);
+  });
+  updateTrackListUI();
+}
+
+// Update track list UI
+function updateTrackListUI() {
+  document.querySelectorAll('.track-list-item').forEach((el, idx) => {
+    el.classList.remove('current', 'played');
+    if (idx === currentIndex) {
+      el.classList.add('current');
+    } else if (idx < currentIndex) {
+      el.classList.add('played');
+    }
+  });
+}
+
+// Load track
+function loadTrack(index) {
+  currentIndex = index;
+  const track = playlist[currentIndex];
+  audio.src = track.src;
+  nowPlaying.textContent = track.title;
+  updateTrackListUI();
+}
+
+// Jump to track
+function jumpToTrack(index) {
+  loadTrack(index);
+  audio.play();
+  setPlaying(true);
+}
+
+// Play/pause
+playBtn.onclick = () => {
+  if (!audio.src) {
+    loadTrack(0);
+  }
+  
+  if (isPlaying) {
+    audio.pause();
+    setPlaying(false);
+  } else {
+    audio.play();
+    setPlaying(true);
+  }
+};
+
+// Stop
+stopBtn.onclick = () => {
+  audio.pause();
+  audio.currentTime = 0;
+  setPlaying(false);
+};
+
+// Progress bar click
+progressBar.onclick = (e) => {
+  if (!audio.src) return;
+  const rect = progressBar.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = percent * audio.duration;
+};
+
+// Set playing state
+function setPlaying(playing) {
+  isPlaying = playing;
+  playBtn.textContent = playing ? '❚❚' : '▶';
+  
+  if (playing) {
+    leftReel.classList.add('spinning');
+    rightReel.classList.add('spinning');
+  } else {
+    leftReel.classList.remove('spinning');
+    rightReel.classList.remove('spinning');
+  }
+}
+
+// Format time
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '0:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// Audio events
+audio.ontimeupdate = () => {
+  currentTimeEl.textContent = formatTime(audio.currentTime);
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = percent + '%';
+};
+
+audio.onloadedmetadata = () => {
+  durationEl.textContent = formatTime(audio.duration);
+};
+
+audio.onended = () => {
+  // Auto-play next track
+  if (currentIndex < playlist.length - 1) {
+    loadTrack(currentIndex + 1);
+    audio.play();
+  } else {
+    setPlaying(false);
+  }
+};
+
+// Initialize
+buildTrackList();
+</script>
+
+</body>
+</html>
