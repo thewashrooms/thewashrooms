@@ -4,7 +4,7 @@ title: "Building a website"
 date:   2025-10-13
 permalink: "building-a-website"
 ---
-'Building' is a relative term, I suppose. If I pay the workmen to build my house, did I really 'build' it? No, I didn't - I paid for somene else to build it.
+'Building' is a relative term, I suppose. If I pay the workmen to build my house, did I really 'build' it? No, I didn't - I paid for someone else to build it.
 
 Well, I haven't been 'building' this website, then. Most of the work was done by an artificial intelligence called Claude.
 
