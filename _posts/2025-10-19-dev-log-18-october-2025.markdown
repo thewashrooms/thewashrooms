@@ -1,0 +1,20 @@
+---
+layout: "post"
+title: "Devlog 19th October 2025"
+date:   2025-10-19
+permalink: "devlog-19-oct"
+---
+
+Just a short one today. I've been working on my Fallen London-style game, but I'm a bit hungover, so progress has been slow.
+
+Nonetheless, I created the inventory system in the backend, which now functions as it's supposed to. There will be item requirements for some cards to both appear and be played, and item rewards for completing certain stories and playing certain cards. The inventory system doesn't yet have a UI; that's a job for another day when I'm less tired and emotional. (The metaphysical hangover hits hard.)
+
+Currently, you start off with some basic items in your inventory: as an immigrant to Cambria, you have a suitcase, a rucksack, some clothes, and a bit of money. Your suitcase goes missing pretty early on in the story (no spoilers) as I wanted the player to start roughly from scratch, but having them be totally penniless felt too difficult. You have to find somewhere to live, after all.
+
+Next up, after the inventory system's UI, is basically more content. I need to flesh out the content significantly more; this will help me figure out which mechanics I actually need, which actually work, and which are broken. Some stuff sounds good in isolation on paper, but either doesn't work or isn't necessary for the game you're trying to make. After I get some more content in the game, I'll know what I need; but at the moment, I'm thinking I want to add next:
+
+- Permanent locations with fixed-ish choices (for example, a 'home' location where you can always eat, sleep, work out, whatever)
+- A fleshed-out reputation system with the games (currently) four main factions
+- An actual time system, either based on a day-night cycle, or a turns-based system where each draw/play etc. is one turn. Or, maybe, a system where different card choices take different amount of times, for more realism. This obviously entails more mechanical difficulty.
+
+Those are my next steps. For now, though, time to eat something greasy and play video games. Remember to wash your hands.
