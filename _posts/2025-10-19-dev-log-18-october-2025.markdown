@@ -18,3 +18,5 @@ Next up, after the inventory system's UI, is basically more content. I need to f
 - An actual time system, either based on a day-night cycle, or a turns-based system where each draw/play etc. is one turn. Or, maybe, a system where different card choices take different amount of times, for more realism. This obviously entails more mechanical difficulty.
 
 Those are my next steps. For now, though, time to eat something greasy and play video games. Remember to wash your hands.
+
+EDIT: I ate a burger and gamed for a couple of hours, and I felt good enough to finish off the inventory system - so there's now a UI which lists, in a very basic form, the contents of the player's inventory. Hurrah.
