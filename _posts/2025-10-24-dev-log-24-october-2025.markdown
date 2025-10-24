@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Devlog 25th October 2025"
+title: "Devlog 24th October 2025"
 date:   2025-10-24
 permalink: "devlog-24-oct"
 ---
