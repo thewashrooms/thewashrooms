@@ -20,4 +20,4 @@ Because that's what this place is all about - it's a living documentation of all
 
 Right now, I'm building a game in style mechanically similar to Fallen London and cyberpunkdreams. If you don't know those two games, check them out. Mine won't have an energy system, though.
 
-This is my website. I'm quite proud of it, even though I didn't do most of the work to make it happen. Thanks, Claude.
+This is my website. I'm quite proud of it, even though I didn't do most of the work to make it happen. Thanks, Claude. And remember to wash your hands.

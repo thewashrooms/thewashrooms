@@ -56,7 +56,7 @@ img {
 }
 
 a {
-  color: $brand-color;
+  color: #ff53e2;
   text-decoration: none;
 
   &:visited {
@@ -64,7 +64,7 @@ a {
   }
 
   &:hover {
-    color: #00a5c200;
+    color: #910000;
     text-decoration: underline;
   }
 }
@@ -110,25 +110,36 @@ a {
   cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto;
 }
 
-.layout-home a, .layout-home a:hover,
-.layout-page a, .layout-page a:hover {
-  cursor: url('/assets/cursors/Large Pencil Light Blue.cur'), auto !important;
+.layout-home a, .layout-page a {
+  cursor: url('/assets/cursors/Large Pencil Light Blue.cur'), auto ;
 }
 
-.layout-post a, .layout-post a:hover {
-  cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto !important;
+.layout-home a:hover, .layout-page a:hover {
+  cursor: url('/assets/cursors/Large Pencil Light Blue.cur'), auto ;
+  color: #47c5ff ;
+  text-decoration: underline;
 }
 
-.layout-page:has(.album-grid),
-.layout-page:has(.music-page-content) {
-  cursor: url('/assets/cursors/musical-cursor.cur'), auto;
+.layout-post a {
+  cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto ;
+}
+
+.layout-post a:hover {
+  cursor: url('/assets/cursors/Large Pastel Orange.cur'), auto ;
+  color: #47c5ff ;
+  text-decoration: underline;
 }
 
 .layout-page:has(.album-grid) a,
+.layout-page:has(.music-page-content) a {
+  cursor: url('/assets/cursors/musical-cursor.cur'), auto ;
+}
+
 .layout-page:has(.album-grid) a:hover,
-.layout-page:has(.music-page-content) a,
 .layout-page:has(.music-page-content) a:hover {
-  cursor: url('/assets/cursors/musical-cursor.cur'), auto !important;
+  cursor: url('/assets/cursors/musical-cursor.cur'), auto ;
+  color: #47c5ff ;
+  text-decoration: underline;
 }
 
 /**
