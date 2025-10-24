@@ -1,8 +1,8 @@
 ---
 layout: "post"
 title: "Devlog 25th October 2025"
-date:   2025-10-25
-permalink: "devlog-25-oct"
+date:   2025-10-24
+permalink: "devlog-24-oct"
 ---
 
 I'm sick. I hate being sick. Perhaps a bit trite, because I imagine everyone hates being sick, but still. Apparently there are some new COVID strains going around - my girlfriend reckons she's got it, too. I had a vaccination earlier this year, but no dice; still caught the bugger.
