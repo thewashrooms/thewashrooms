@@ -5,11 +5,11 @@ date:   2025-11-23
 permalink: "devlog-23-nov-25"
 ---
 
-I'm tired, so no jokes this post. Just a boring list of things I did over the last four or five days to my game.
+I'm tired, so no stories this post: just a boring list of things I did over the last four or five days to my game.
 
 1. Added a 'can discard' feature, so some cards have to be played, and some can be discarded. Most will be discardable, I predict, but if you're in a dungeon-type location, or if there's a combat encounter, you'll probably have to pick an option.
 
-2. I made it trackable from where you are when you open a storylet. It means I could add storylets which are openable from the inventory, and the player is returned to the inventory (or wherever I want, in the future) once the storylet is over.
+2. I made it trackable from where you are when you open a storylet. It means I can add storylets which are openable from the inventory, and the player is returned to the inventory (or wherever I want, in the future) once the storylet is over.
 
 3. Finally added a time tracking system. There are four 'ticks' per hour, equating to fifteen minutes. I can define how many ticks an action will take, if any. Then I added a clock to the UI which tracks time and day - no dates, because I want it to be ambiguous when the story takes place.
 
