@@ -1,0 +1,24 @@
+---
+layout: "post"
+title: "Even a stopped clock: dev log 20th November 2025"
+date:   2025-11-23
+permalink: "devlog-23-nov-25"
+---
+
+I'm tired, so no jokes this post. Just a boring list of things I did over the last four or five days to my game.
+
+1. Added a 'can discard' feature, so some cards have to be played, and some can be discarded. Most will be discardable, I predict, but if you're in a dungeon-type location, or if there's a combat encounter, you'll probably have to pick an option.
+
+2. I made it trackable from where you are when you open a storylet. It means I could add storylets which are openable from the inventory, and the player is returned to the inventory (or wherever I want, in the future) once the storylet is over.
+
+3. Finally added a time tracking system. There are four 'ticks' per hour, equating to fifteen minutes. I can define how many ticks an action will take, if any. Then I added a clock to the UI which tracks time and day - no dates, because I want it to be ambiguous when the story takes place.
+
+4. Cleaned up some old warnings which weren't breaking anything but were annoying me. I also identified an unused parameter for stats, but I've left it for now in case I need it later. For the life of me I can't remember what it does.
+
+5. Improved the inventory. Each item in the inventory is now loaded from an item database, which will be a set of jsons - one json per item. As I said before, storylets can now be opened from inventory items which I can define in the json itself. I can also add a forbidden_effects parameter to them so once the storylet has been opened, the item can't be retrieved again - one item per storylet. But you can still open the storylet from the item for those that remain in your inventory; this means you can, for example, read books multiple times, but you'll only get the item(s) from them once. Eventually items will be able to heal health, boost stats, etc.
+
+6. I added a gold border to usable items in the inventory, to make them clearer. I'll probably make it look prettier later.
+
+7. Finally, I had a system where specific cards would only appear depending on certain circumstances, dicatated by hidden effects which are added to the player based on other story choices. Now, though, I can also add them to individual choices, meaning the storylet might still show up, but specific choices won't if the player has or doesn't have an effect or requirement respectively.
+
+I think that's it. Remember to wash your hands.
