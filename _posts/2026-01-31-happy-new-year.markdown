@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Naked prostitutes, Happy New Year, and all that"
+title: "Naked prostitutes, happy new year, and all that"
 date:   2026-01-31
 permalink: "twentytwentysix"
 ---
